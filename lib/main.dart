@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interview_a/Screens/statics.dart';
 import 'package:interview_a/screens/home.dart';
 
 void main() {
@@ -10,8 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/create': (context) => StatisicScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

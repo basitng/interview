@@ -1,7 +1,7 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:interview_a/screens/custom_icon_icons.dart';
-import 'package:interview_a/widgets/Cards.dart';
 
 class BottomNav extends StatelessWidget {
   const BottomNav({
@@ -23,32 +23,34 @@ class BottomNav extends StatelessWidget {
           ),
         ],
       ),
-      child: const Padding(
+      child: Padding(
         padding: EdgeInsets.all(8.0),
         child: GNav(
-          tabBackgroundColor: Color(0X1A00A9CB),
+          tabBackgroundColor: Color(0X1AF64F00),
           padding: EdgeInsets.all(16.0),
-          activeColor: Color(0Xff00A9CB),
+          activeColor: Color(0XffF64F00),
           tabBorderRadius: 14,
           color: Color.fromARGB(255, 83, 82, 82),
           gap: 6,
           tabs: [
-            GButton(
-              icon: CustomIcon.home,
+            const GButton(
+              icon: FeatherIcons.home,
               text: 'Home',
             ),
-            GButton(
-              icon: CustomIcon.headset,
+            const GButton(
+              icon: FeatherIcons.layout,
               text: 'Headphones',
             ),
-            GButton(
-              icon: CustomIcon.tv,
-              text: 'Television',
+            const GButton(
+              icon: FeatherIcons.bell,
+              text: 'Notification',
             ),
             GButton(
-              icon: CustomIcon.pay,
-              text: 'Television',
-            ),
+                icon: FeatherIcons.user,
+                text: 'Profile',
+                onPressed: () {
+                  Navigator.pushNamed(context, "/create");
+                }),
           ],
         ),
       ),

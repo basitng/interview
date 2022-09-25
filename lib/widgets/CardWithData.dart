@@ -1,38 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:interview_a/widgets/Cards.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:interview_a/widgets/ListCard.dart';
 
-class ListContainer extends StatelessWidget {
-  const ListContainer({
+class CardWithData extends StatelessWidget {
+  const CardWithData({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: const [
-          SizedBox(
-            width: 10.0,
-          ),
-          PostCards(
-            title: "Dealing with the...",
-            author: "Doctor chris okafor",
-            image: "1",
-          ),
-          PostCards(
-            title: "Global communi...",
-            author: "Doctor chris okafor",
-            image: "2",
-          ),
-          PostCards(
-            title: "Prophesy Healing",
-            author: "Doctor chris okafor",
-            image: "3",
-          ),
-        ],
-      ),
+    return Column(
+      children: const [
+        ListCard(
+          icon: "security-safe",
+          label: "Security",
+        ),
+        ListCard(
+          icon: "card",
+          label: "Card",
+        ),
+        ListCard(
+          icon: "notification",
+          label: "Notification",
+        ),
+        ListCard(
+          icon: "card",
+          label: "Live Support",
+        ),
+        ListCard(
+          icon: "card",
+          label: "About Us",
+        ),
+        ListCard(
+          icon: "card",
+          label: "Contact Us",
+        ),
+        ListCard(
+          icon: "card",
+          label: "Terms & Privavcy Policy",
+        ),
+      ],
     );
   }
 }
