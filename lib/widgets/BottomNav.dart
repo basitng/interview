@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class BottomNav extends StatelessWidget {
@@ -32,25 +33,33 @@ class BottomNav extends StatelessWidget {
           tabBorderRadius: 14,
           color: Color.fromARGB(255, 83, 82, 82),
           gap: 6,
+          selectedIndex: 3,
           tabs: [
-            const GButton(
+            GButton(
+              leading: SvgPicture.asset("assets/home.svg"),
               icon: FeatherIcons.home,
               text: 'Home',
-            ),
-            const GButton(
-              icon: FeatherIcons.layout,
-              text: 'Headphones',
-            ),
-            const GButton(
-              icon: FeatherIcons.bell,
-              text: 'Notification',
+              active: false,
+              onPressed: () {
+                Navigator.pushNamed(context, "/");
+              },
             ),
             GButton(
-                icon: FeatherIcons.user,
-                text: 'Profile',
-                onPressed: () {
-                  Navigator.pushNamed(context, "/create");
-                }),
+              icon: FeatherIcons.layout,
+              text: 'Headphones',
+              leading: SvgPicture.asset("assets/wallet.svg"),
+            ),
+            GButton(
+              icon: FeatherIcons.bell,
+              text: 'Notification',
+              leading: SvgPicture.asset("assets/wallet.svg"),
+            ),
+            GButton(
+              icon: FeatherIcons.user,
+              text: 'Profile',
+              active: true,
+              leading: SvgPicture.asset("assets/profile.svg"),
+            )
           ],
         ),
       ),

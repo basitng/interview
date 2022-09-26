@@ -7,18 +7,32 @@ import 'package:interview_a/widgets/CustomWidget.dart';
 import 'package:interview_a/widgets/GraphIndicator.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class StatisicScreen extends StatelessWidget {
+class StatisicScreen extends StatefulWidget {
   const StatisicScreen({super.key});
 
+  @override
+  State<StatisicScreen> createState() => _StatisicScreenState();
+}
+
+class _StatisicScreenState extends State<StatisicScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    const color = 0XFFF64F00;
+
+    void changeColor(Color color) {
+      setState(() {
+        color = color;
+      });
+    }
+
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         flexibleSpace: Container(
@@ -42,7 +56,7 @@ class StatisicScreen extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, "/");
+            Navigator.pushNamed(context, "/profile");
           },
         ),
       ),
@@ -51,92 +65,6 @@ class StatisicScreen extends StatelessWidget {
         child: SizedBox(
           height: height / 4,
           child: InkWell(
-            onTap: () {
-              showMaterialModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (context) => SingleChildScrollView(
-                  controller: ModalScrollController.of(context),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20.0),
-                            topLeft: Radius.circular(20.0))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 50.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Awesome",
-                            style: GoogleFonts.poppins(
-                                fontSize: 28, fontWeight: FontWeight.w200),
-                          ),
-                          SizedBox(
-                            width: width - 100,
-                            child: Text(
-                              "What percentage of your income would you like to save?",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 22, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Wrap(
-                            children: const [
-                              CustomChip(label: "50"),
-                              CustomChip(label: "60"),
-                              CustomChip(label: "70"),
-                              CustomChip(label: "80"),
-                              CustomChip(label: "90"),
-                              CustomChip(label: "100"),
-                              CustomChip(label: "10"),
-                              CustomChip(label: "20"),
-                              CustomChip(label: "30"),
-                              CustomChip(label: "40"),
-                            ],
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(vertical: 15),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.circular(12)),
-                            // ignore: prefer_const_constructors
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 20.0),
-                              // ignore: prefer_const_constructors
-                              child: TextField(
-                                textAlign: TextAlign.center,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Enter Manually",
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: width,
-                            height: 54,
-                            decoration: BoxDecoration(
-                                color: const Color(0XFFF64F00),
-                                borderRadius: BorderRadius.circular(10.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Center(
-                                  child: Text(
-                                "Create Rhapsave",
-                                style: GoogleFonts.poppins(color: Colors.white),
-                              )),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
             child: Card(
               elevation: 5,
               shape: RoundedRectangleBorder(
@@ -172,9 +100,11 @@ class StatisicScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SvgPicture.asset(
-                        "assets/pie.svg",
-                        width: 100,
+                      Image.asset(
+                        "assets/pie.png",
+                        width: 95,
+                        height: 95,
+                        fit: BoxFit.contain,
                       )
                     ],
                   ),
@@ -204,6 +134,116 @@ class StatisicScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showMaterialModalBottomSheet(
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) => SingleChildScrollView(
+              controller: ModalScrollController.of(context),
+              child: Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20.0),
+                        topLeft: Radius.circular(20.0))),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 55,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: const Color.fromARGB(48, 38, 38, 38)),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 50.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Awesome",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 28, fontWeight: FontWeight.w200),
+                              ),
+                              SizedBox(
+                                width: width - 100,
+                                child: Text(
+                                  "What percentage of your income would you like to save?",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Wrap(
+                                children: const [
+                                  CustomChip(label: "50"),
+                                  CustomChip(label: "60"),
+                                  CustomChip(label: "70"),
+                                  CustomChip(label: "80"),
+                                  CustomChip(label: "90"),
+                                  CustomChip(label: "100"),
+                                  CustomChip(label: "10"),
+                                  CustomChip(label: "20"),
+                                  CustomChip(label: "30"),
+                                  CustomChip(label: "40"),
+                                ],
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 15),
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    border: Border.all(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(12)),
+                                // ignore: prefer_const_constructors
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  // ignore: prefer_const_constructors
+                                  child: TextField(
+                                    textAlign: TextAlign.center,
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Enter Manually",
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: width,
+                                height: 54,
+                                decoration: BoxDecoration(
+                                    color: const Color(0XFFF64F00),
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Center(
+                                      child: Text(
+                                    "Create Rhapsave",
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white),
+                                  )),
+                                ),
+                              )
+                            ]),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        elevation: 0,
+        backgroundColor: Color(0XFFF64F00),
+        child: SvgPicture.asset("assets/Pen.svg"),
       ),
     );
   }

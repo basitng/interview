@@ -13,9 +13,11 @@ class HomeScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Color.fromARGB(138, 136, 148, 215),
+      statusBarColor: Colors.transparent,
     ));
     return Scaffold(
+      backgroundColor: const Color(0XFFF5F5F5),
+      primary: false,
       body: SafeArea(
         child: ListView(children: [
           Column(
@@ -25,14 +27,14 @@ class HomeScreen extends StatelessWidget {
                 ProfileContainer(width: width),
               ]),
               const Padding(
-                padding: EdgeInsets.symmetric(vertical: 70.0, horizontal: 10.0),
+                padding: EdgeInsets.symmetric(vertical: 70.0, horizontal: 15.0),
                 child: CardWithData(),
               )
             ],
           ),
         ]),
       ),
-      bottomNavigationBar: BottomNav(),
+      bottomNavigationBar: const BottomNav(),
     );
   }
 }

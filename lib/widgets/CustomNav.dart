@@ -15,10 +15,12 @@ class CustomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: height / 4,
+      height: height / 3.6,
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/header.png"), fit: BoxFit.cover)),
+              image: AssetImage("assets/header3.png"),
+              alignment: Alignment.topRight,
+              fit: BoxFit.cover)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
         child: Row(

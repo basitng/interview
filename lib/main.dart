@@ -12,9 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: "/profile",
       routes: {
-        '/': (context) => HomeScreen(),
-        '/create': (context) => StatisicScreen(),
+        '/': (context) => StatisicScreen(),
+        '/profile': (context) => HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
     );
